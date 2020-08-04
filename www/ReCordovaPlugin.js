@@ -67,9 +67,9 @@ module.exports.unReadNotification = function (arg0, success, error) {
 	exec(success, error, 'ReCordovaPlugin', 'unReadNotification', [arg0]);
 };
 
-
-
-
+module.exports.notificationCTAClicked = function (arg0, success, error) {
+	exec(success, error, 'ReCordovaPlugin', 'notificationCTAClicked', [arg0]);
+};
 
 module.exports.getViewJson = function (arg0, success, error) {
 	getViewJsons();
