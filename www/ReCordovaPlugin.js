@@ -71,9 +71,6 @@ module.exports.notificationCTAClicked = function (arg0, success, error) {
 	exec(success, error, 'ReCordovaPlugin', 'notificationCTAClicked', [arg0]);
 };
 
-module.exports.notificationCTAClicked = function(arg0,success, error) {
-	exec(success, error, 'ReCordovaPlugin', 'notificationCTAClicked', [ arg0 ]);
-};
 module.exports.handleQrLink = function(arg0,success, error) {
 	exec(success, error, 'ReCordovaPlugin', 'handleQrLink', [ arg0 ]);
 };
