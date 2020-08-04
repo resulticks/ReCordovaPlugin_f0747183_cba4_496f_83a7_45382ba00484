@@ -1,0 +1,16 @@
+{
+  "field": [
+    {
+      "screenName": "Register",
+      "subScreenName": "",
+      "track": [
+        {
+          "identifier": "email",
+          "captureType": "value",
+          "result": "",
+          "description": "value"
+        }
+      ]
+    }
+  ]
+}

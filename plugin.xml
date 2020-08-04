@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="resulticks-cordova-plugin-fg" version="0.1"
+	xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>ReCordovaPlugin</name>
+	<js-module name="ReCordovaPlugin" src="www/ReCordovaPlugin.js">
+		<clobbers target="ReCordovaPlugin" />
+	</js-module>
+
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="ReCordovaPlugin">
+				<param name="android-package" value="resu.io.ReCordovaPlugin" />
+                <param name="onload" value="true" />
+			</feature>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <meta-data android:name="resulticks.default_notification_icon" android:resource="@mipmap/ic_app_icon" />
+        <meta-data android:name="resulticks.default_notification_icon_transparent" android:resource="@mipmap/ic_app_icon_transparent" />
+        <meta-data android:name="resulticks.default_notification_color" android:resource="@color/notificationColor" />
+        <meta-data android:name="resulticks.key" android:value="api_key_15182770-f6c3-43a7-936a-891e08bd27f5" />
+      </config-file> 
+        <framework src="io.resu:ReAndroidSDK_0e0cce15_ffa7_484b_9b10_4703bc77bc16:-SNAPSHOT" />
+		<source-file src="src/android/ReCordovaPlugin.java" target-dir="src/resu/io" />
+	</platform>
+	<platform name="ios">
+		<config-file parent="/*" target="config.xml">
+			<feature name="ReCordovaPlugin">
+				<param name="ios-package" value="ReCordovaPlugin" />
+                <param name="onload" value="true" />
+			</feature>
+		</config-file>
+		<framework src="src/ios/REiosFramework/Alamofire.framework" custom="true" />
+		<framework src="src/ios/REiosFramework/CryptoSwift.framework" custom="true" />
+		<framework src="src/ios/REiosFramework/IDZSwiftCommonCrypto.framework" custom="true" />
+		<framework src="src/ios/REiosFramework/REIOSSDK.framework" custom="true" />
+		<framework src="src/ios/REiosFramework/SocketIO.framework" custom="true" />
+		<framework src="src/ios/REiosFramework/Starscream.framework" custom="true" />
+		<source-file src="src/ios/ReCordovaPlugin.m" />
+	</platform>
+</plugin>

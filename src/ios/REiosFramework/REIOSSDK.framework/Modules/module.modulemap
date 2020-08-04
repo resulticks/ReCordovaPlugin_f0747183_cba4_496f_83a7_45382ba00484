@@ -1,0 +1,11 @@
+framework module REIOSSDK {
+  umbrella header "REIOSSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module REIOSSDK.Swift {
+    header "REIOSSDK-Swift.h"
+    requires objc
+}
