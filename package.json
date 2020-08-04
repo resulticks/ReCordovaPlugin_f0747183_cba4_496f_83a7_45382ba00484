@@ -1,20 +1,20 @@
 {
 	"name": "recordovapluginfg",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/resulticks/ReAndroidSDK_5f7a2e8e_1bdb_4739_9d28_278a2759394c.git"
+		"url": "git+https://github.com/resulticks/ReCordovaPlugin_f0747183_cba4_496f_83a7_45382ba00484.git"
 	},
 	"keywords": ["recordovapluginfg"],
 	"author": "ResultickInc",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/resulticks/ReAndroidSDK_5f7a2e8e_1bdb_4739_9d28_278a2759394c/issues"
+		"url": "https://github.com/resulticks/ReCordovaPlugin_f0747183_cba4_496f_83a7_45382ba00484/issues"
 	},
-	"homepage": "https://github.com/resulticks/ReAndroidSDK_5f7a2e8e_1bdb_4739_9d28_278a2759394c#readme",
+	"homepage": "https://github.com/resulticks/ReCordovaPlugin_f0747183_cba4_496f_83a7_45382ba00484#readme",
 	"description": ""
 }
