@@ -1,0 +1,83 @@
+[
+    {
+        "ruleName":"New visitor",
+        "campaignId":"121",
+        "visitorCount":""
+    },
+    {
+        "ruleName":"Return visitor",
+        "campaignId":"121",
+        "visitorCount":"3"
+    },
+    {
+        "ruleName":"App Installed",
+        "campaignId":"121",
+        "fromDate":"10/04/2020",
+        "toDate":"20/05/2020"
+    },
+    {
+        "ruleName":"App Update",
+        "campaignId":"121",
+        "fromDate":"10/04/2020",
+        "toDate":"20/05/2020"
+    },
+    {
+        "ruleName":"Known User",
+        "campaignId":"121"
+    },
+    {
+        "ruleName":"Identified User",
+        "campaignId":"121"
+    },
+    {
+        "ruleName":"App in background",
+        "campaignId":"121"
+    },
+    {
+        "ruleName":"Event detected",
+        "campaignId":"121",
+        "eventName":""
+    },
+    {
+        "ruleName":"App rating",
+        "campaignId":"121"
+    },
+    {
+        "ruleName":"Notification Actions",
+        "campaignId":"121",
+        "actionName":""
+    },
+    {
+        "ruleName":"Notification Disabled",
+        "campaignId":"121"
+    },
+    {
+        "ruleName":"App version",
+        "campaignId":"121",
+        "versionName":"1.0"
+    },
+    {
+        "ruleName":"App language",
+        "campaignId":"121",
+        "language":"en-IN"
+    },
+    {
+        "ruleName":"Location",
+        "campaignId":"121"
+    },
+    {
+        "ruleName":"Last visited screen",
+        "campaignId":"121",
+        "screenName":"HomeLoanViewController:/homeloan"
+    },
+    {
+        "ruleName":"Time Spend On Screen",
+        "campaignId":"121",
+        "TimeSpendOnScreen":"more then 15 seconds",
+        "screenName":"HomeLoanViewController:/homeloan"
+    },
+    {
+        "ruleName":"App Exit",
+        "campaignId":"121"
+    }
+]
