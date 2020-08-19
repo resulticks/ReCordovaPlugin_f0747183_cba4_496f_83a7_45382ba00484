@@ -25,6 +25,8 @@
 -(void)notificationCTAClicked:(CDVInvokedUrlCommand*)command;
 -(void)handleQrLink:(CDVInvokedUrlCommand *)command;
 - (void)getDeepLinkData:(CDVInvokedUrlCommand *)command;
+- (void)appConversionTracking:(CDVInvokedUrlCommand *)command;
+
 
 
 @end
@@ -326,6 +328,10 @@
                                       pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:error];
                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
+}
+
+- (void)appConversionTracking:(CDVInvokedUrlCommand *)command{
+    [REiosHandler appConversionTracking];
 }
 
 

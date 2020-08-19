@@ -543,15 +543,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosDeeplinkRecei
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkReceiver> _Nullable smartLinkDelegate;)
 + (id <REiosSmartLinkReceiver> _Nullable)smartLinkDelegate SWIFT_WARN_UNUSED_RESULT;
 + (void)setSmartLinkDelegate:(id <REiosSmartLinkReceiver> _Nullable)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
++ (NSInteger)getEnv SWIFT_WARN_UNUSED_RESULT;
++ (void)setGetEnv:(NSInteger)value;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UNNotificationCategory;
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)initSdkWithAppId:(NSString * _Nonnull)id notificationCategory:(NSSet<UNNotificationCategory *> * _Nonnull)category success:(void (^ _Nonnull)(NSInteger))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure SWIFT_METHOD_FAMILY(none);
-@end
-
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
 + (void)initWithApiWithApiKey:(NSString * _Nonnull)apiKey registerNotificationCategory:(NSSet<UNNotificationCategory *> * _Nullable)category SWIFT_METHOD_FAMILY(none);
@@ -559,14 +557,30 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkRece
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)getDeeplinkingDataWithSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
++ (void)sdkRegistrationWithParams:(NSDictionary<NSString *, id> * _Nonnull)params success:(void (^ _Nonnull)(NSInteger))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)initSdkWithAppId:(NSString * _Nonnull)id notificationCategory:(NSSet<UNNotificationCategory *> * _Nonnull)category success:(void (^ _Nonnull)(NSInteger))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure SWIFT_METHOD_FAMILY(none);
 @end
 
 
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)sdkRegistrationWithParams:(NSDictionary<NSString *, id> * _Nonnull)params success:(void (^ _Nonnull)(NSInteger))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
++ (void)getDeeplinkingDataWithSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)appConversionTracking;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)registerUserData:(NSString * _Nullable)params;
++ (void)sdkRegistrationWithDictWithParams:(NSDictionary<NSString *, id> * _Nonnull)params;
 @end
 
 
@@ -576,11 +590,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkRece
 @end
 
 
-
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)handleQrLinkWithUrl:(NSString * _Nonnull)url successHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))successHandler failureHandler:(void (^ _Nonnull)(NSString * _Nonnull))failureHandler;
-@end
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
@@ -594,8 +603,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkRece
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)registerUserData:(NSString * _Nullable)params;
-+ (void)sdkRegistrationWithDictWithParams:(NSDictionary<NSString *, id> * _Nonnull)params;
++ (void)handleQrLinkWithUrl:(NSString * _Nonnull)url successHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))successHandler failureHandler:(void (^ _Nonnull)(NSString * _Nonnull))failureHandler;
 @end
 
 
@@ -1295,15 +1303,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosDeeplinkRecei
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkReceiver> _Nullable smartLinkDelegate;)
 + (id <REiosSmartLinkReceiver> _Nullable)smartLinkDelegate SWIFT_WARN_UNUSED_RESULT;
 + (void)setSmartLinkDelegate:(id <REiosSmartLinkReceiver> _Nullable)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
++ (NSInteger)getEnv SWIFT_WARN_UNUSED_RESULT;
++ (void)setGetEnv:(NSInteger)value;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UNNotificationCategory;
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)initSdkWithAppId:(NSString * _Nonnull)id notificationCategory:(NSSet<UNNotificationCategory *> * _Nonnull)category success:(void (^ _Nonnull)(NSInteger))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure SWIFT_METHOD_FAMILY(none);
-@end
-
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
 + (void)initWithApiWithApiKey:(NSString * _Nonnull)apiKey registerNotificationCategory:(NSSet<UNNotificationCategory *> * _Nullable)category SWIFT_METHOD_FAMILY(none);
@@ -1311,14 +1317,30 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkRece
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)getDeeplinkingDataWithSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
++ (void)sdkRegistrationWithParams:(NSDictionary<NSString *, id> * _Nonnull)params success:(void (^ _Nonnull)(NSInteger))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)initSdkWithAppId:(NSString * _Nonnull)id notificationCategory:(NSSet<UNNotificationCategory *> * _Nonnull)category success:(void (^ _Nonnull)(NSInteger))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure SWIFT_METHOD_FAMILY(none);
 @end
 
 
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)sdkRegistrationWithParams:(NSDictionary<NSString *, id> * _Nonnull)params success:(void (^ _Nonnull)(NSInteger))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
++ (void)getDeeplinkingDataWithSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)appConversionTracking;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)registerUserData:(NSString * _Nullable)params;
++ (void)sdkRegistrationWithDictWithParams:(NSDictionary<NSString *, id> * _Nonnull)params;
 @end
 
 
@@ -1328,11 +1350,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkRece
 @end
 
 
-
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)handleQrLinkWithUrl:(NSString * _Nonnull)url successHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))successHandler failureHandler:(void (^ _Nonnull)(NSString * _Nonnull))failureHandler;
-@end
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
@@ -1346,8 +1363,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkRece
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)registerUserData:(NSString * _Nullable)params;
-+ (void)sdkRegistrationWithDictWithParams:(NSDictionary<NSString *, id> * _Nonnull)params;
++ (void)handleQrLinkWithUrl:(NSString * _Nonnull)url successHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))successHandler failureHandler:(void (^ _Nonnull)(NSString * _Nonnull))failureHandler;
 @end
 
 
