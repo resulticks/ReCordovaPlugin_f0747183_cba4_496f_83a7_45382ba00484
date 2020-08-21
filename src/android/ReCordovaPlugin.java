@@ -167,9 +167,20 @@ public class ReCordovaPlugin extends CordovaPlugin {
             default:
 
                 break;
+            case "appConversionTracking": // Enable field track
+                this.appConversionTracking(args, callbackContext);
+                break;
 
         }
         return false;
+    }
+    private void appConversionTracking(JSONArray args, CallbackContext callbackContext) {
+        try {
+            ReAndroidSDK.getInstance(cordova.getActivity()).appConversionTracking();
+        } catch (Exception e) {
+            Log.e("appConversionTracking  Exception: ", String.valueOf(e.getMessage()));
+        }
+
     }
 
 private void notificationCTAClicked(JSONArray message, CallbackContext callbackContext) {
