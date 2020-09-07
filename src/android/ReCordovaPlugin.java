@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Handler;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -160,20 +161,22 @@ public class ReCordovaPlugin extends CordovaPlugin {
             case "unReadNotification": // Enable field track
                 this.unReadNotification(args, callbackContext);
                 break;
-
             case "notificationCTAClicked": // Enable field track
                 this.notificationCTAClicked(args, callbackContext);
                 break;
-            default:
 
-                break;
             case "appConversionTracking": // Enable field track
                 this.appConversionTracking(args, callbackContext);
+                break;
+
+            default:
+
                 break;
 
         }
         return false;
     }
+
     private void appConversionTracking(JSONArray args, CallbackContext callbackContext) {
         try {
             ReAndroidSDK.getInstance(cordova.getActivity()).appConversionTracking();
@@ -183,7 +186,7 @@ public class ReCordovaPlugin extends CordovaPlugin {
 
     }
 
-private void notificationCTAClicked(JSONArray message, CallbackContext callbackContext) {
+    private void notificationCTAClicked(JSONArray message, CallbackContext callbackContext) {
 
 
         if (message != null && message.length() > 0) {
@@ -199,9 +202,7 @@ private void notificationCTAClicked(JSONArray message, CallbackContext callbackC
             Log.e("notificationCTAClicked  Exception : ", "Expected one non-empty string argument.");
         }
 
-
     }
-
 
 
     private void getFieldTrackData(JSONArray args, CallbackContext callbackContext) {
@@ -213,8 +214,6 @@ private void notificationCTAClicked(JSONArray message, CallbackContext callbackC
             if (list != null) {
                 callbackContext.success(new JSONArray(list).toString());
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
