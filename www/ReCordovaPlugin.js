@@ -81,7 +81,10 @@ module.exports.getDeepLinkData = function(arg0,success, error) {
 
 module.exports.appConversionTracking = function(arg0,success,error) {
 	exec(success, error, 'ReCordovaPlugin', 'appConversionTracking', [ arg0 ]);
-}
+};
+module.exports.formDataCapture = function(arg0,success,error) {
+	exec(success, error, 'ReCordovaPlugin', 'formDataCapture', [ arg0 ]);
+};
 
 module.exports.getViewJson = function (arg0, success, error) {
 	getViewJsons();
