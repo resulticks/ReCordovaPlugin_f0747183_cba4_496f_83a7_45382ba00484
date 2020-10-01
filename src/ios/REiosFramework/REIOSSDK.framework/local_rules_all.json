@@ -1,0 +1,50 @@
+{
+  "dynamicList": [
+    {
+      "ruleID": "1",
+      "dynamicListID": "",
+      "dynamicListName": "",
+      "anyCount": 3,
+      "ruleType": "Any",
+      "campaignId": "",
+      "rules": [
+        {
+          "ruleName": "Return visitor",
+          "isMandatory": true,
+          "value": ""
+        },
+        {
+          "ruleName": "App Installed",
+          "isMandatory": false,
+          "value": ""
+        },
+        {
+          "ruleName": "App updated",
+          "isMandatory": false,
+          "value": ""
+        },
+        {
+          "ruleName": "App version",
+          "value": "72",
+          "isMandatory": true
+        },
+        {
+          "ruleName": "User Type",
+          "value": "identified",
+          "isMandatory": true
+        },
+        {
+          "ruleName": "Language",
+          "value": "englis, Franch",
+          "isMandatory": false
+        },
+        {
+          "ruleName": "Operating System",
+          "value": "Androi,ios",
+          "isMandatory": false
+        }
+       
+      ]
+    }
+  ]
+}

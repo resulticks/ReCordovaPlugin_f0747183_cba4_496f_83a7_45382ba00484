@@ -31,7 +31,6 @@
 			</feature>
 		</config-file>
 		
-		<framework src="src/ios/REiosFramework/CryptoSwift.framework" custom="true" />
 		<framework src="src/ios/REiosFramework/REIOSSDK.framework" custom="true" />
 		<framework src="src/ios/REiosFramework/SocketIO.framework" custom="true" />
 		<framework src="src/ios/REiosFramework/Starscream.framework" custom="true" />

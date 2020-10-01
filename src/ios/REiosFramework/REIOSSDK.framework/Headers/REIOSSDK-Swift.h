@@ -543,9 +543,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosDeeplinkRecei
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkReceiver> _Nullable smartLinkDelegate;)
 + (id <REiosSmartLinkReceiver> _Nullable)smartLinkDelegate SWIFT_WARN_UNUSED_RESULT;
 + (void)setSmartLinkDelegate:(id <REiosSmartLinkReceiver> _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
-+ (NSInteger)getEnv SWIFT_WARN_UNUSED_RESULT;
-+ (void)setGetEnv:(NSInteger)value;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -554,6 +551,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
 + (void)initWithApiWithApiKey:(NSString * _Nonnull)apiKey registerNotificationCategory:(NSSet<UNNotificationCategory *> * _Nullable)category SWIFT_METHOD_FAMILY(none);
 @end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)getDeeplinkingDataWithSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
+@end
+
+
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
@@ -566,30 +570,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
 @end
 
 
-
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)getDeeplinkingDataWithSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
-@end
-
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)appConversionTracking;
-@end
-
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)registerUserData:(NSString * _Nullable)params;
-+ (void)sdkRegistrationWithDictWithParams:(NSDictionary<NSString *, id> * _Nonnull)params;
-@end
-
-
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
 + (void)setScreenName:(NSString * _Nonnull)name;
 + (void)setScreenNameWithScreenName:(NSString * _Nonnull)screenName;
 @end
 
 
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)formDataCapture;
++ (void)formDataCaptureWithDict:(NSDictionary<NSString *, id> * _Nonnull)dict;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)handleQrLinkWithUrl:(NSString * _Nonnull)url successHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))successHandler failureHandler:(void (^ _Nonnull)(NSString * _Nonnull))failureHandler;
+@end
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
@@ -603,13 +600,19 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)handleQrLinkWithUrl:(NSString * _Nonnull)url successHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))successHandler failureHandler:(void (^ _Nonnull)(NSString * _Nonnull))failureHandler;
++ (void)registerUserData:(NSString * _Nullable)params;
++ (void)sdkRegistrationWithDictWithParams:(NSDictionary<NSString *, id> * _Nonnull)params;
 @end
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
 + (void)updateWithLocation:(NSString * _Nullable)location;
 + (void)updateLocationWithLat:(NSString * _Nonnull)strLat long:(NSString * _Nonnull)strLong;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)appConversionTracking;
 @end
 
 
@@ -1303,9 +1306,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosDeeplinkRecei
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <REiosSmartLinkReceiver> _Nullable smartLinkDelegate;)
 + (id <REiosSmartLinkReceiver> _Nullable)smartLinkDelegate SWIFT_WARN_UNUSED_RESULT;
 + (void)setSmartLinkDelegate:(id <REiosSmartLinkReceiver> _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
-+ (NSInteger)getEnv SWIFT_WARN_UNUSED_RESULT;
-+ (void)setGetEnv:(NSInteger)value;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1314,6 +1314,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
 + (void)initWithApiWithApiKey:(NSString * _Nonnull)apiKey registerNotificationCategory:(NSSet<UNNotificationCategory *> * _Nullable)category SWIFT_METHOD_FAMILY(none);
 @end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)getDeeplinkingDataWithSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
+@end
+
+
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
@@ -1326,30 +1333,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
 @end
 
 
-
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)getDeeplinkingDataWithSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))success failure:(void (^ _Nonnull)(NSString * _Nonnull))failure;
-@end
-
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)appConversionTracking;
-@end
-
-
-@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)registerUserData:(NSString * _Nullable)params;
-+ (void)sdkRegistrationWithDictWithParams:(NSDictionary<NSString *, id> * _Nonnull)params;
-@end
-
-
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
 + (void)setScreenName:(NSString * _Nonnull)name;
 + (void)setScreenNameWithScreenName:(NSString * _Nonnull)screenName;
 @end
 
 
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)formDataCapture;
++ (void)formDataCaptureWithDict:(NSDictionary<NSString *, id> * _Nonnull)dict;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)handleQrLinkWithUrl:(NSString * _Nonnull)url successHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))successHandler failureHandler:(void (^ _Nonnull)(NSString * _Nonnull))failureHandler;
+@end
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
@@ -1363,13 +1363,19 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger getEnv;)
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
-+ (void)handleQrLinkWithUrl:(NSString * _Nonnull)url successHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))successHandler failureHandler:(void (^ _Nonnull)(NSString * _Nonnull))failureHandler;
++ (void)registerUserData:(NSString * _Nullable)params;
++ (void)sdkRegistrationWithDictWithParams:(NSDictionary<NSString *, id> * _Nonnull)params;
 @end
 
 
 @interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
 + (void)updateWithLocation:(NSString * _Nullable)location;
 + (void)updateLocationWithLat:(NSString * _Nonnull)strLat long:(NSString * _Nonnull)strLong;
+@end
+
+
+@interface REiosHandler (SWIFT_EXTENSION(REIOSSDK))
++ (void)appConversionTracking;
 @end
 
 

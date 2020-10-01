@@ -26,6 +26,7 @@
 -(void)handleQrLink:(CDVInvokedUrlCommand *)command;
 - (void)getDeepLinkData:(CDVInvokedUrlCommand *)command;
 - (void)appConversionTracking:(CDVInvokedUrlCommand *)command;
+- (void)formDataCapture:(CDVInvokedUrlCommand *)command;
 
 
 
@@ -332,6 +333,21 @@
 
 - (void)appConversionTracking:(CDVInvokedUrlCommand *)command{
     [REiosHandler appConversionTracking];
+}
+
+- (void)formDataCapture:(CDVInvokedUrlCommand *)command{
+     CDVPluginResult *pluginResult = nil;
+       NSDictionary *params = [command.arguments firstObject];
+       if (params != nil && [params count] > 0) {
+
+           NSLog(@"form data capture %@",params);
+           
+           [REiosHandler formDataCaptureWithDict:params];
+
+           pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"params"];
+       } else {
+           pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+       }
 }
 
 

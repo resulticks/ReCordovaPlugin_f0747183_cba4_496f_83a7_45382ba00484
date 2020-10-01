@@ -1,0 +1,637 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name REIOSSDK
+import AVKit
+import AudioToolbox
+import CommonCrypto
+import CoreData
+import CoreLocation
+import CoreTelephony
+import Foundation
+@_exported import REIOSSDK
+import SocketIO
+import Swift
+import SystemConfiguration
+import UIKit
+import UserNotifications
+import WebKit
+extension REiosHandler {
+  @objc dynamic public class func setForegroundNotification(data: UserNotifications.UNNotification, completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc dynamic public class func setNotificationAction(response: UserNotifications.UNNotificationResponse)
+  @objc dynamic public class func setForegroundNotification(_ strNotification: Swift.String?, completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc dynamic public class func setNotificationAction(strResponse: Swift.String)
+  @objc dynamic public class func setCustomNotification(userInfo: [Swift.String : Any])
+}
+extension REiosHandler {
+  @objc dynamic public class func getNotificationList() -> [Any]
+  @objc dynamic public class func getNotificationList(successHandler: @escaping ([Any]) -> ())
+}
+extension REiosHandler {
+  @objc dynamic public class func deleteNotificationListWith(dict: [Swift.String : Any])
+  @objc dynamic public class func deleteNotificationByCampaignId(campaignId: Swift.String)
+  @objc dynamic public class func deleteNotificationByNotificationId(notificationId: Swift.String)
+  public class func deleteNotificationByNotificationId(notificationId: Swift.String, notificationList: @escaping ([Any]) -> ())
+  public class func deleteNotificationByCampaignId(campaignId: Swift.String, notificationList: @escaping ([Any]) -> ())
+  public class func deleteNotificationListWith(dict: [Swift.String : Any], notificationList: @escaping ([Any]) -> ())
+}
+extension REiosHandler {
+  @objc dynamic public class func getReadNotificationCount(onSuccess success: @escaping (Swift.Int) -> ())
+  @objc dynamic public class func getUnReadNotificationCount(onSuccess success: @escaping (Swift.Int) -> ())
+  @objc dynamic public class func getTotalNotificationCount(onSuccess success: @escaping (Swift.Int) -> ())
+  @objc dynamic public class func readNotification(notificationId: Swift.String, onSuccess success: @escaping (Swift.Int) -> ())
+  @objc dynamic public class func unReadNotification(notificationId: Swift.String, onSuccess success: @escaping (Swift.Int) -> ())
+  @objc dynamic public class func notificationCTAClicked(notificationId: Swift.String, actionId: Swift.Int, onSuccess success: @escaping (Swift.Int) -> ())
+}
+extension REiosHandler {
+  @objc dynamic public class func handleOpenlink(url: Foundation.URL, successHandler: @escaping (Swift.String) -> (Swift.Void), failureHandler: @escaping (Swift.String) -> (Swift.Void))
+  @objc dynamic public class func handleUniversalLink(userActivity: Foundation.NSUserActivity, successHandler: @escaping (Swift.String) -> (Swift.Void), failureHandler: @escaping (Swift.String) -> (Swift.Void))
+  @objc dynamic public class func handleDynamicLink(userActivity: Foundation.NSUserActivity, successHandler: @escaping (Swift.String) -> (Swift.Void), failureHandler: @escaping (Swift.String) -> (Swift.Void))
+  public class func handleOpenlinkWith(url: Foundation.URL, successHandler: @escaping ([Swift.String : Any]) -> (Swift.Void), failureHandler: @escaping (Swift.String) -> (Swift.Void))
+  public class func handleUniversalLinkWith(userActivity: Foundation.NSUserActivity, successHandler: @escaping ([Swift.String : Any]) -> (Swift.Void), failureHandler: @escaping (Swift.String) -> (Swift.Void))
+  public class func handleDynamicLinkWith(userActivity: Foundation.NSUserActivity, successHandler: @escaping ([Swift.String : Any]) -> (Swift.Void), failureHandler: @escaping (Swift.String) -> (Swift.Void))
+}
+extension REiosHandler {
+  @objc dynamic public class func handleQrLinkWith(url: Swift.String, successHandler: @escaping ([Swift.String : Any]) -> (Swift.Void), failureHandler: @escaping (Swift.String) -> (Swift.Void))
+}
+extension REiosHandler {
+  @objc dynamic public class func getDeeplinkingData(success: @escaping REIOSSDK.SHDict, failure: @escaping REIOSSDK.FHStr)
+}
+extension REiosHandler {
+  @objc dynamic public class func update(location: Swift.String?)
+  @objc dynamic public class func updateLocation(lat strLat: Swift.String, long strLong: Swift.String)
+  public class func updateLocation(lat douLat: Swift.Double, long douLong: Swift.Double)
+}
+extension REiosHandler {
+  @objc dynamic public class func formDataCapture()
+  @objc dynamic public class func formDataCapture(dict: [Swift.String : Any])
+}
+@objc @_inheritsConvenienceInitializers public class NotificationHandler : ObjectiveC.NSObject {
+  public class func registerCategory(_ category: Swift.Set<UserNotifications.UNNotificationCategory>?)
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension REiosHandler {
+  @objc dynamic public class func addCustomEvent(_ event: Swift.String?)
+  @objc dynamic public class func addEvent(eventName: Swift.String, data: Swift.String?)
+  @objc dynamic public class func addEvent(_ eventName: Swift.String, data: [Swift.String : Any])
+  public class func addCustomEvent(name: Swift.String, data: [Swift.String : Any]?)
+}
+@objc public protocol REiosNotificationReceiver {
+  @objc func didReceiveResponse(data: [Swift.String : Any])
+}
+@objc public protocol REiosDeeplinkReceiver {
+  @objc func didReceiveDeeplink(data: [Swift.String : Any])
+}
+@objc public protocol REiosSmartLinkReceiver {
+  @objc func didReceiveSmartLink(data: [Swift.String : Any])
+}
+@objc @_inheritsConvenienceInitializers public class REiosHandler : ObjectiveC.NSObject {
+  @objc public static var debug: Swift.Bool
+  @objc public static var notificationDelegate: REIOSSDK.REiosNotificationReceiver?
+  @objc public static var deeplinkDelegate: REIOSSDK.REiosDeeplinkReceiver?
+  @objc public static var smartLinkDelegate: REIOSSDK.REiosSmartLinkReceiver?
+  @objc deinit
+  @objc override dynamic public init()
+}
+@_hasMissingDesignatedInitializers open class CarouselCell {
+  @objc deinit
+  open var index: Swift.Int {
+    get
+  }
+  open func uninstall()
+}
+public enum CarouselDirection {
+  case horizontal, vertical
+  public static func == (a: REIOSSDK.CarouselDirection, b: REIOSSDK.CarouselDirection) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum CarouselType {
+  case linear, loop
+  public static func == (a: REIOSSDK.CarouselType, b: REIOSSDK.CarouselType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum CarouselPagingType {
+  case none
+  case cell
+  case cellLimit
+  case scoll
+  public static func == (a: REIOSSDK.CarouselPagingType, b: REIOSSDK.CarouselPagingType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension CarouselScrollView {
+  public var cellWidth: CoreGraphics.CGFloat {
+    get
+  }
+  public var cellHeight: CoreGraphics.CGFloat {
+    get
+  }
+  public var pageWidth: CoreGraphics.CGFloat {
+    get
+  }
+  public var pageHeight: CoreGraphics.CGFloat {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class CarouselScrollView : UIKit.UIScrollView {
+  open var cellPerPage: Swift.Int {
+    get
+    set
+  }
+  open var buffeCellCount: Swift.Int {
+    get
+    set
+  }
+  open var cacheSize: Swift.Int {
+    get
+    set
+  }
+  open var direction: REIOSSDK.CarouselDirection {
+    get
+    set
+  }
+  open var type: REIOSSDK.CarouselType
+  open var pagingType: REIOSSDK.CarouselPagingType {
+    get
+    set
+  }
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  final public func updateCurrentCellsLayout()
+  open func reload()
+  @objc override dynamic open func layoutSubviews()
+}
+extension CarouselScrollView : UIKit.UIScrollViewDelegate {
+  @objc dynamic public func scrollViewWillEndDragging(_ scrollView: UIKit.UIScrollView, withVelocity velocity: CoreGraphics.CGPoint, targetContentOffset: Swift.UnsafeMutablePointer<CoreGraphics.CGPoint>)
+  @objc dynamic public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+  @objc dynamic public func scrollViewWillBeginDecelerating(_ scrollView: UIKit.UIScrollView)
+  @objc dynamic public func scrollViewDidEndDecelerating(_ scrollView: UIKit.UIScrollView)
+  @objc dynamic public func scrollViewDidEndScrollingAnimation(_ scrollView: UIKit.UIScrollView)
+  @objc dynamic public func scrollViewWillBeginDragging(_ scrollView: UIKit.UIScrollView)
+  @objc dynamic public func scrollViewDidEndDragging(_ scrollView: UIKit.UIScrollView, willDecelerate decelerate: Swift.Bool)
+}
+extension CarouselScrollView {
+  public var visibleCells: [REIOSSDK.CarouselCell] {
+    get
+  }
+  public var firstVisibleCell: REIOSSDK.CarouselCell? {
+    get
+  }
+  public var lastVisibleIndex: REIOSSDK.CarouselCell? {
+    get
+  }
+  public var firstVisibleCellIndex: CoreGraphics.CGFloat {
+    get
+  }
+  public func scrollTo(cell: Swift.Int, animated: Swift.Bool = false)
+  public func nextCell(_ animated: Swift.Bool = false)
+  public func preNext(_ animated: Swift.Bool = false)
+}
+extension CarouselScrollView {
+  @objc dynamic public func autoScrollToNext()
+  @objc dynamic public func autoScrollToPre()
+  public func autoScroll(_ timeInterval: Foundation.TimeInterval, increase: Swift.Bool)
+  public func stopAutoScroll()
+  public func pauseAutoScroll()
+  public func resumeAutoScroll()
+}
+extension CarouselScrollView {
+  public func reload(index: Swift.Int)
+  public func reload(indexs: [Swift.Int])
+  public func reloadvisibleCells()
+}
+public protocol CarouselViewDataSourse : AnyObject {
+  func numberOfView(_ carousel: REIOSSDK.CarouselView) -> Swift.Int
+  func carousel(_ carousel: REIOSSDK.CarouselView, viewForIndex index: Swift.Int) -> UIKit.UIView?
+}
+@objc public protocol CarouselViewDelegate : AnyObject {
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselView, willInstallCell cell: Swift.Int)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselView, willUninstallCell cell: Swift.Int)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselView, didInstallCell cell: Swift.Int)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselView, didUninstallCell cell: Swift.Int)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselView, scrollFrom from: Swift.Int, to: Swift.Int, progress: CoreGraphics.CGFloat)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselView, didScrollFrom from: Swift.Int, to: Swift.Int)
+  @objc optional func carouselDidScroll(_ carousel: REIOSSDK.CarouselView)
+  @objc optional func carouselWillBeginDragging(_ carousel: REIOSSDK.CarouselView)
+  @objc optional func carouselDidEndDragging(_ carousel: REIOSSDK.CarouselView, willDecelerate decelerate: Swift.Bool)
+  @objc optional func carouselWillBeginDecelerating(_ carousel: REIOSSDK.CarouselView)
+  @objc optional func carouselDidEndDecelerating(_ carousel: REIOSSDK.CarouselView)
+  @objc optional func carouselDidEndScrollingAnimation(_ carousel: REIOSSDK.CarouselView)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselView, didTapAt cell: Swift.Int)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class CarouselView : UIKit.UIView {
+  final public let _carousel: REIOSSDK.CarouselScrollView
+  open var cellPerPage: Swift.Int {
+    get
+    set
+  }
+  open var buffeCellCount: Swift.Int {
+    get
+    set
+  }
+  open var cacheSize: Swift.Int {
+    get
+    set
+  }
+  open var direction: REIOSSDK.CarouselDirection {
+    get
+    set
+  }
+  open var type: REIOSSDK.CarouselType {
+    get
+    set
+  }
+  open var pagingType: REIOSSDK.CarouselPagingType {
+    get
+    set
+  }
+  weak open var dataSource: REIOSSDK.CarouselViewDataSourse? {
+    get
+    set
+  }
+  weak open var myNewDelegate: REIOSSDK.CarouselViewDelegate? {
+    get
+    set
+  }
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open func layoutSubviews()
+  @objc deinit
+}
+public protocol CarouselViewControllerDataSourse : AnyObject {
+  func numberOfViewController(_ carousel: REIOSSDK.CarouselViewController) -> Swift.Int
+  func carousel(_ carousel: REIOSSDK.CarouselViewController, viewControllerForIndex index: Swift.Int) -> UIKit.UIViewController?
+}
+@objc public protocol CarouselViewControllerDelegate : AnyObject {
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselViewController, willInstallCell cell: Swift.Int)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselViewController, willUninstallCell cell: Swift.Int)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselViewController, didInstallCell cell: Swift.Int)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselViewController, didUninstallCell cell: Swift.Int)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselViewController, scrollFrom from: Swift.Int, to: Swift.Int, progress: CoreGraphics.CGFloat)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselViewController, didScrollFrom from: Swift.Int, to: Swift.Int)
+  @objc optional func carouselDidScroll(_ carousel: REIOSSDK.CarouselViewController)
+  @objc optional func carouselWillBeginDragging(_ carousel: REIOSSDK.CarouselViewController)
+  @objc optional func carouselDidEndDragging(_ carousel: REIOSSDK.CarouselViewController, willDecelerate decelerate: Swift.Bool)
+  @objc optional func carouselWillBeginDecelerating(_ carousel: REIOSSDK.CarouselViewController)
+  @objc optional func carouselDidEndDecelerating(_ carousel: REIOSSDK.CarouselViewController)
+  @objc optional func carouselDidEndScrollingAnimation(_ carousel: REIOSSDK.CarouselViewController)
+  @objc optional func carousel(_ carousel: REIOSSDK.CarouselViewController, didTapAt cell: Swift.Int)
+}
+@objc @_inheritsConvenienceInitializers open class CarouselViewController : UIKit.UIViewController {
+  open var cellPerPage: Swift.Int {
+    get
+    set
+  }
+  open var buffeCellCount: Swift.Int {
+    get
+    set
+  }
+  open var cacheSize: Swift.Int {
+    get
+    set
+  }
+  open var direction: REIOSSDK.CarouselDirection {
+    get
+    set
+  }
+  open var type: REIOSSDK.CarouselType {
+    get
+    set
+  }
+  open var pagingType: REIOSSDK.CarouselPagingType {
+    get
+    set
+  }
+  weak open var dataSource: REIOSSDK.CarouselViewControllerDataSourse? {
+    get
+    set
+  }
+  weak open var delegate: REIOSSDK.CarouselViewControllerDelegate? {
+    get
+    set
+  }
+  open var autoScrolOnlyViewAppeared: Swift.Bool
+  open var _carousel: REIOSSDK.CarouselScrollView {
+    get
+  }
+  @objc override dynamic open func loadView()
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+public protocol CarouselProtocol {
+  var _carousel: REIOSSDK.CarouselScrollView { get }
+}
+extension CarouselProtocol {
+  public var visibleCells: [REIOSSDK.CarouselCell] {
+    get
+  }
+  public var firstVisibleCell: REIOSSDK.CarouselCell? {
+    get
+  }
+  public var lastVisibleIndex: REIOSSDK.CarouselCell? {
+    get
+  }
+  public var firstVisibleCellIndex: CoreGraphics.CGFloat {
+    get
+  }
+  public func scrollTo(cell: Swift.Int, animated: Swift.Bool = false)
+  public func nextCell(_ animated: Swift.Bool = false)
+  public func preNext(_ animated: Swift.Bool = false)
+}
+extension CarouselProtocol {
+  public func autoScroll(_ timeInterval: Foundation.TimeInterval, increase: Swift.Bool)
+  public func stopAutoScroll()
+  public func pauseAutoScroll()
+  public func resumeAutoScroll()
+}
+extension CarouselProtocol {
+  public func reload()
+  public func reload(index: Swift.Int)
+  public func reload(indexs: [Swift.Int])
+  public func reloadvisibleCells()
+}
+extension CarouselProtocol {
+  public var isTapEnabled: Swift.Bool {
+    get
+    set
+  }
+}
+extension CarouselView : REIOSSDK.CarouselProtocol {
+}
+extension CarouselViewController : REIOSSDK.CarouselProtocol {
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+}
+extension UIImage {
+  public class func gifImageWithData(data: Foundation.NSData) -> UIKit.UIImage?
+  public class func gifImageWithURL(gifUrl: Swift.String) -> UIKit.UIImage?
+  public class func gifImageWithName(name: Swift.String) -> UIKit.UIImage?
+}
+extension UIImageView {
+  public func imageFromServerURL(urlString: Swift.String)
+}
+public enum RSBaseUrl : Swift.String {
+  case team
+  case biz
+  case run
+  case sTeam
+  case sBiz
+  case sRun
+  case sdkResu
+  case apisvc
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class NetworkReachabilityManager {
+  public enum NetworkReachabilityStatus {
+    case unknown
+    case notReachable
+    case reachable(REIOSSDK.NetworkReachabilityManager.ConnectionType)
+  }
+  public enum ConnectionType {
+    case ethernetOrWiFi
+    case wwan
+    public static func == (a: REIOSSDK.NetworkReachabilityManager.ConnectionType, b: REIOSSDK.NetworkReachabilityManager.ConnectionType) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public typealias Listener = (REIOSSDK.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Void
+  open var isReachable: Swift.Bool {
+    get
+  }
+  open var isReachableOnWWAN: Swift.Bool {
+    get
+  }
+  open var isReachableOnEthernetOrWiFi: Swift.Bool {
+    get
+  }
+  open var networkReachabilityStatus: REIOSSDK.NetworkReachabilityManager.NetworkReachabilityStatus {
+    get
+  }
+  open var listenerQueue: Dispatch.DispatchQueue
+  open var listener: REIOSSDK.NetworkReachabilityManager.Listener?
+  open var flags: SystemConfiguration.SCNetworkReachabilityFlags? {
+    get
+  }
+  open var previousFlags: SystemConfiguration.SCNetworkReachabilityFlags
+  convenience public init?(host: Swift.String)
+  convenience public init?()
+  @objc deinit
+  @discardableResult
+  open func startListening() -> Swift.Bool
+  open func stopListening()
+}
+extension NetworkReachabilityManager.NetworkReachabilityStatus : Swift.Equatable {
+}
+public func == (lhs: REIOSSDK.NetworkReachabilityManager.NetworkReachabilityStatus, rhs: REIOSSDK.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Bool
+extension REiosHandler {
+  @objc dynamic public class func appConversionTracking()
+}
+@_inheritsConvenienceInitializers @objc(ScreenTracking) public class ScreenTracking : CoreData.NSManagedObject {
+  @objc deinit
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+}
+extension ScreenTracking {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<REIOSSDK.ScreenTracking>
+  @objc @NSManaged dynamic public var dict: ObjectiveC.NSObject? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var date: Foundation.Date? {
+    @objc get
+    @objc set
+  }
+}
+@_inheritsConvenienceInitializers @objc(NotificationList) public class NotificationList : CoreData.NSManagedObject {
+  @objc deinit
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+}
+extension NotificationList {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<REIOSSDK.NotificationList>
+  @objc @NSManaged dynamic public var dict: ObjectiveC.NSObject? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var date: Foundation.Date? {
+    @objc get
+    @objc set
+  }
+}
+@_inheritsConvenienceInitializers @objc(EventTracking) public class EventTracking : CoreData.NSManagedObject {
+  @objc deinit
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+}
+extension EventTracking {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<REIOSSDK.EventTracking>
+  @objc @NSManaged dynamic public var dict: ObjectiveC.NSObject? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var date: Foundation.Date? {
+    @objc get
+    @objc set
+  }
+}
+@_inheritsConvenienceInitializers @objc(CampaignTracking) public class CampaignTracking : CoreData.NSManagedObject {
+  @objc deinit
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+}
+extension CampaignTracking {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<REIOSSDK.CampaignTracking>
+  @objc @NSManaged dynamic public var dict: ObjectiveC.NSObject? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var date: Foundation.Date? {
+    @objc get
+    @objc set
+  }
+}
+@_inheritsConvenienceInitializers @objc(FieldTracking) public class FieldTracking : CoreData.NSManagedObject {
+  @objc deinit
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+}
+extension FieldTracking {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<REIOSSDK.FieldTracking>
+  @objc @NSManaged dynamic public var captureType: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var identifier: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var screenName: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var descriptionn: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var campaignId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var markAsGoal: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var minDuration: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var minLength: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var dict: ObjectiveC.NSObject? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var date: Foundation.Date? {
+    @objc get
+    @objc set
+  }
+}
+public enum TableName : Swift.String {
+  case screenTracking
+  case notificationList
+  case campaignTracking
+  case eventTracking
+  case fieldTracking
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension REiosHandler {
+  @objc dynamic public class func registerUserData(_ params: Swift.String?)
+  @objc dynamic public class func sdkRegistrationWithDict(params: [Swift.String : Any])
+}
+extension REiosHandler {
+  @objc dynamic public class func sdkRegistrationWith(params: [Swift.String : Any], success: @escaping (Swift.Int) -> (), failure: @escaping (Swift.String) -> ())
+}
+extension UIViewController {
+  @objc override dynamic open func motionEnded(_ motion: UIKit.UIEvent.EventSubtype, with event: UIKit.UIEvent?)
+}
+public enum Model1 : Swift.String {
+  case simulator, iPod1, iPod2, iPod3, iPod4, iPod5, iPad2, iPad3, iPad4, iPhone4, iPhone4S, iPhone5, iPhone5S, iPhone5C, iPadMini1, iPadMini2, iPadMini3, iPadAir1, iPadAir2, iPadPro9_7, iPadPro9_7_cell, iPadPro10_5, iPadPro10_5_cell, iPadPro12_9, iPadPro12_9_cell, iPhone6, iPhone6plus, iPhone6S, iPhone6Splus, iPhoneSE, iPhone7, iPhone7plus, iPhone8, iPhone8plus, iPhoneX, iPhoneXS, iPhoneXSmax, iPhoneXR, iPhone11, iPhone11Pro, iPhone11ProMax, unrecognized
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension UIDevice {
+  public static var modelname: REIOSSDK.Model1 {
+    get
+  }
+}
+public typealias SHDict = ([Swift.String : Any]) -> (Swift.Void)
+public typealias FHStr = (Swift.String) -> (Swift.Void)
+@objc @_inheritsConvenienceInitializers public class Deeplinking : ObjectiveC.NSObject {
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension REiosHandler {
+  @objc dynamic public class func setScreenName(_ name: Swift.String)
+  @objc dynamic public class func setScreenName(screenName: Swift.String)
+}
+extension NotificationHandler {
+  public class func deleteNotificationListWith(dict: [Swift.String : Any])
+  public class func deleteNotificationByCampaignId(campaignId: Swift.String)
+  public class func deleteNotificationByNotificationId(notificationId: Swift.String)
+}
+extension NotificationHandler {
+  public class func checkCampaginisExistorNot(campaginId: Swift.String, database: REIOSSDK.TableName, successHandler: @escaping (CoreData.NSManagedObject?) -> ())
+  public class func checkNotificationIdExistorNot(notificationId: Swift.String, successHandler: @escaping (CoreData.NSManagedObject?) -> ())
+}
+extension REiosHandler {
+  @objc dynamic public class func initWithApi(apiKey: Swift.String, registerNotificationCategory category: Swift.Set<UserNotifications.UNNotificationCategory>?)
+}
+extension REiosHandler {
+  @objc dynamic public class func initSdk(withAppId id: Swift.String, notificationCategory category: Swift.Set<UserNotifications.UNNotificationCategory>, success: @escaping (Swift.Int) -> (), failure: @escaping (Swift.String) -> ())
+}
+extension String {
+  public func validateAppId() -> Swift.Bool
+  public func getStrValueFromUserDefaults() -> Swift.String
+  public func setStrValueToUserDefaults(value: Swift.String)
+  public func getBoolValueFromUserDefaults() -> Swift.Bool
+  public func setBoolValueToUserDefaults(value: Swift.Bool)
+  public func getAnyValueFromUserDefaults() -> Any
+  public func setAnyValueToUserDefaults(value: Any)
+  public func getIntValueFromUserDefaults() -> Swift.Int
+  public func setIntValueToUserDefaults(value: Swift.Int)
+}
+extension REIOSSDK.CarouselDirection : Swift.Equatable {}
+extension REIOSSDK.CarouselDirection : Swift.Hashable {}
+extension REIOSSDK.CarouselType : Swift.Equatable {}
+extension REIOSSDK.CarouselType : Swift.Hashable {}
+extension REIOSSDK.CarouselPagingType : Swift.Equatable {}
+extension REIOSSDK.CarouselPagingType : Swift.Hashable {}
+extension REIOSSDK.RSBaseUrl : Swift.Equatable {}
+extension REIOSSDK.RSBaseUrl : Swift.Hashable {}
+extension REIOSSDK.RSBaseUrl : Swift.RawRepresentable {}
+extension REIOSSDK.NetworkReachabilityManager.ConnectionType : Swift.Equatable {}
+extension REIOSSDK.NetworkReachabilityManager.ConnectionType : Swift.Hashable {}
+extension REIOSSDK.TableName : Swift.Equatable {}
+extension REIOSSDK.TableName : Swift.Hashable {}
+extension REIOSSDK.TableName : Swift.RawRepresentable {}
+extension REIOSSDK.Model1 : Swift.Equatable {}
+extension REIOSSDK.Model1 : Swift.Hashable {}
+extension REIOSSDK.Model1 : Swift.RawRepresentable {}
