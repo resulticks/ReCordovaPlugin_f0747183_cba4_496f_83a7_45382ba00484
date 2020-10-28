@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="resulticks-cordova-plugin-fg" version="1.12"
+<plugin id="resulticks-cordova-plugin-fg" version="1.13"
 	xmlns="http://apache.org/cordova/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android">
 	<name>ReCordovaPlugin</name>
@@ -18,7 +18,7 @@
         <meta-data android:name="resulticks.default_notification_icon" android:resource="@mipmap/ic_app_icon" />
         <meta-data android:name="resulticks.default_notification_icon_transparent" android:resource="@mipmap/ic_app_icon_transparent" />
         <meta-data android:name="resulticks.default_notification_color" android:resource="@color/notificationColor" />
-        <meta-data android:name="resulticks.key" android:value="api_key_019734fe-3e78-4601-945b-a63d380a4c53" />
+        <meta-data android:name="resulticks.key" android:value="api_key_f451556b-fefb-486e-8110-1f11364ee505" />
       </config-file> 
         <framework src="io.resu:ReAndroidSDK_f0747183_cba4_496f_83a7_45382ba00484:-SNAPSHOT" />
 		<source-file src="src/android/ReCordovaPlugin.java" target-dir="src/resu/io" />
