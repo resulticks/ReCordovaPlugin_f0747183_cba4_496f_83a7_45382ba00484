@@ -176,7 +176,7 @@ public class ReCordovaPlugin extends CordovaPlugin {
         return false;
     }
 
-    private void appConversionTracking(JSONArray args, CallbackContext callbackContext) {
+    private void appConversionTracking(JSONArray message, CallbackContext callbackContext) {
         try {
             JSONObject jsonObject = null;
             try {
