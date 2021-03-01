@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import io.mob.resu.reandroidsdk.AppConstants;
+import io.mob.resu.reandroidsdk.AppRuleListener;
 import io.mob.resu.reandroidsdk.AppLifecyclePresenter;
 import io.mob.resu.reandroidsdk.IDeepLinkInterface;
 import io.mob.resu.reandroidsdk.MRegisterUser;
