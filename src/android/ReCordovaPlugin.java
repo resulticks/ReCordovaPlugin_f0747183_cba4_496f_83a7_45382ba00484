@@ -448,9 +448,12 @@ public class ReCordovaPlugin extends CordovaPlugin {
             public void run() {
                 if (message != null && message.length() > 0) {
                     try {
+
                         JSONObject jsonObject = message.getJSONObject(0);
+                        CURRENT_FRAGMENT_NAME = jsonObject.optString("screenName");
                         screenTracking(jsonObject.optString("screenName"));
                         OldScreenName = newScreenName;
+                        AppRuleListener.LAST_FRAGMENT_NAME = OldScreenName;
                         newScreenName = jsonObject.optString("screenName");
 
                     } catch (Exception e) {
